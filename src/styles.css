@@ -1,0 +1,172 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+@theme inline {
+  --font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-sunk: var(--surface-sunk);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-safe: var(--safe);
+  --color-safe-soft: var(--safe-soft);
+  --color-caution: var(--caution);
+  --color-caution-soft: var(--caution-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-ring: var(--primary);
+  --shadow-control: var(--control-shadow);
+}
+
+:root {
+  --background: oklch(0.985 0.006 85);
+  --surface: oklch(1 0 0);
+  --surface-sunk: oklch(0.962 0.008 85);
+  --foreground: oklch(0.21 0.014 60);
+  --muted: oklch(0.955 0.007 85);
+  --muted-foreground: oklch(0.505 0.014 65);
+  --border: oklch(0.895 0.009 80);
+  --border-strong: oklch(0.79 0.012 75);
+  --primary: oklch(0.653 0.196 44);
+  --primary-strong: oklch(0.575 0.185 42);
+  --primary-soft: oklch(0.955 0.033 65);
+  --primary-foreground: oklch(1 0 0);
+  --safe: oklch(0.5 0.115 155);
+  --safe-soft: oklch(0.955 0.033 155);
+  --caution: oklch(0.545 0.115 75);
+  --caution-soft: oklch(0.958 0.04 90);
+  --danger: oklch(0.512 0.18 27);
+  --danger-soft: oklch(0.955 0.028 25);
+  --info: oklch(0.48 0.09 240);
+  --info-soft: oklch(0.955 0.022 245);
+  --control-shadow: 0 1px 2px oklch(0.21 0.014 60 / 0.08);
+}
+
+@media print {
+  header,
+  nav,
+  button,
+  form {
+    display: none !important;
+  }
+  main {
+    padding-bottom: 0 !important;
+  }
+  body {
+    background: var(--surface);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: 0;
+    font-weight: 650;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+@utility rule {
+  border-bottom: 1px solid var(--border);
+}
+
+@utility tap {
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .brand-greeting {
+    animation: arrive 400ms ease-out both;
+  }
+  @keyframes arrive {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.stage-marker {
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+}
+
+[data-workspace] > div {
+  max-width: none;
+  padding-inline: 0;
+  padding-bottom: 0;
+}
+
+[data-workspace] .brand-greeting > a {
+  display: none;
+}
+
+[data-workspace] .brand-greeting h1 {
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+[data-workspace] .sticky {
+  position: static;
+  backdrop-filter: none;
+}

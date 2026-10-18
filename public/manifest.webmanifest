@@ -1,0 +1,12 @@
+{
+  "name": "Finavi",
+  "short_name": "Finavi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8f4",
+  "theme_color": "#F26A0F",
+  "description": "A private money plan for income that changes week to week.",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "64x64", "type": "image/png", "purpose": "any" }
+  ]
+}
